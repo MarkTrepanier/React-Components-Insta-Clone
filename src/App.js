@@ -3,14 +3,14 @@
   Not all files in the project need code added.
   Look at each file to see what props need to be passed!
 */
-console.log('intitial commit');
+
 // Import the state hook
 import React from 'react';
 // Import the Posts (plural!) and SearchBar components, since they are used inside App component
 import Posts from './components/Posts/Posts'
 import SeachBar from './components/SearchBar/SearchBar'
 // Import the dummyData
-import dummyData from 'dummy-data'
+import dummyData from './dummy-data'
 import './App.css';
 import { useState } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
@@ -36,7 +36,7 @@ const App = () => {
      */
     setPosts(posts.map(item=>{
       if(item.id === postId){
-        return item//likes + 1;todo include likes
+        return [...item.likes, item]
       }
       else{return item;}
     }))
@@ -46,6 +46,7 @@ const App = () => {
     <div className='App'>
       {/* Add SearchBar and Posts here to render them */}
       <SearchBar/>
+      <Posts posts = {posts}/>
       {/* Check the implementation of each component, to see what props they require, if any! */}
     </div>
   );
